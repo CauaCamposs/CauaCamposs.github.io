@@ -1,19 +1,116 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja de Temperos Naturais</title>
+    <title>CamposNutriStore</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #000000;
+        }
+        header {
+            background-color: #004d00;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #000000;
+            padding: 10px;
+        }
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+        }
+        nav a:hover {
+            color: #00cc00;
+        }
+        .hero {
+            text-align: center;
+            padding: 50px;
+            background-color: #e6ffe6;
+        }
+        .hero h1 {
+            font-size: 2.5em;
+            color: #004d00;
+        }
+        .hero p {
+            font-size: 1.2em;
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .product {
+            border: 1px solid #004d00;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            background-color: #ffffff;
+        }
+        .product img {
+            width: 100%;
+            max-width: 150px;
+            margin: auto;
+        }
+        .product h3 {
+            color: #004d00;
+            margin: 10px 0;
+        }
+        footer {
+            background-color: #004d00;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
 <body>
-
-<h1>The input formaction attribute</h1>
-
-<p>The formaction attribute specifies the URL of a file that will process the input when the form is submitted.</p>
-
-<form action="teste.html">
-  <label for="fname">First name:</label>
-  <input type="text" id="fname" name="fname"><br><br>
-  <label for="lname">Last name:</label>
-  <input type="text" id="lname" name="lname"><br><br>
-  <input type="submit" value="Submit">
-  <input type="submit" formaction="/action_page2.php" value="Submit as Admin">
-</form>
-
+    <header>
+        <h1>Loja de Temperos Naturais</h1>
+        <p>Descubra sabores naturais para suas receitas!</p>
+    </header>
+    <nav>
+        <a href="#home">Início</a>
+        <a href="#products">Produtos</a>
+        <a href="#about">Sobre Nós</a>
+        <a href="#contact">Contato</a>
+    </nav>
+    <section class="hero" id="home">
+        <h1>Bem-vindo à nossa loja!</h1>
+        <p>Oferecemos temperos 100% naturais, cultivados com amor e sem agrotóxicos.</p>
+    </section>
+    <section class="products" id="products">
+        <div class="product">
+            <img src="https://via.placeholder.com/150" alt="Manjericão">
+            <h3>Manjericão</h3>
+            <p>Preço: R$ 5,00</p>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/150" alt="Orégano">
+            <h3>Orégano</h3>
+            <p>Preço: R$ 4,50</p>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/150" alt="Alecrim">
+            <h3>Alecrim</h3>
+            <p>Preço: R$ 6,00</p>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2025 Loja de Temperos Naturais. Todos os direitos reservados.</p>
+    </footer>
 </body>
 </html>
