@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Armazém da Senhora Lourdes</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f4f4; }
+    header { background: #5a8f5a; color: white; padding: 20px; text-align: center; }
+    main { padding: 20px; }
+    .produto { background: white; padding: 10px; margin: 10px 0; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
+    button { background: #5a8f5a; color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; }
+    button:hover { background: #467246; }
+    #carrinho { background: white; padding: 10px; border-radius: 8px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Armazém da Senhora Lourdes</h1>
+    <p>Produtos Naturais Direto do Campo</p>
+  </header>
+  <main>
+    <h2>Catálogo</h2>
+    <div id="catalogo"></div>
+
+    <h2>Carrinho</h2>
+    <div id="carrinho">
+      <ul id="lista-carrinho"></ul>
+      <p>Total: R$ <span id="total">0.00</span></p>
+      <a id="finalizar" href="#" target="_blank"><button>Finalizar no WhatsApp</button></a>
+    </div>
+  </main>
+
+  <script>
+    const produtos = [
+      { nome: 'Mel Puro 500ml', preco: 20 },
+      { nome: 'Farinha de Mandioca', preco: 10 },
+      { nome: 'Feijão Orgânico 1kg', preco: 15 },
+      { nome: 'Chá de Ervas Naturais', preco: 12 },
+    ];
+
+    const catalogoDiv = document.getElementById('catalogo');
+    const listaCarrinho = document.getElementById('lista-carrinho');
+    const totalSpan = document.getElementById('total');
+    const finalizarBtn = document.getElementById('finalizar');
+
+    let carrinho = [];
+
+    function atualizarCarrinho() {
+      listaCarrinho.innerHTML = '';
+      let total = 0;
+      carrinho.forEach(item => {
+        total += item.preco;
+        const li = document.createElement('li');
+        li.textContent = `${item.nome} - R$ ${item.preco.toFixed(2)}`;
+        listaCarrinho.appendChild(li);
+      });
+      totalSpan.textContent = total.toFixed(2);
+
+      const mensagem = encodeURIComponent(
+        'Olá, gostaria de fazer o seguinte pedido:\n' +
+        carrinho.map(item => `- ${item.nome} (R$ ${item.preco.toFixed(2)})`).join('\n') +
+        `\nTotal: R$ ${total.toFixed(2)}`
+      );
+      finalizarBtn.href = `https://wa.me/554598448614?text=${mensagem}`;
+    }
+
+    produtos.forEach(produto => {
+      const div = document.createElement('div');
+      div.className = 'produto';
+      div.innerHTML = `<span>${produto.nome} - R$ ${produto.preco.toFixed(2)}</span>
+        <button onclick='adicionarAoCarrinho(${JSON.stringify(produto)})'>Adicionar</button>`;
+      catalogoDiv.appendChild(div);
+    });
+
+    function adicionarAoCarrinho(produto) {
+      carrinho.push(produto);
+      atualizarCarrinho();
+    }
+  </script>
+</body>
+</html>
