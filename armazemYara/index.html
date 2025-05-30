@@ -5,26 +5,198 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Armazém da Senhora Lourdes</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f4f4; }
-    header { background: #5a8f5a; color: white; padding: 20px; text-align: center; }
+    body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; background: #fdf6ee; }
+    header {
+      background: #c7963b;
+      color: white;
+      padding: 16px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 { margin: 0; font-size: 24px; }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 16px;
+      font-weight: bold;
+    }
     main { padding: 20px; }
-    .produto { background: white; padding: 10px; margin: 10px 0; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
-    button { background: #5a8f5a; color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; }
-    button:hover { background: #467246; }
-    #carrinho { background: white; padding: 10px; border-radius: 8px; margin-top: 20px; }
+    h2 { color: #b3822c; border-bottom: 3px solid #b3822c; padding-bottom: 5px; }
+    .categoria {
+      margin-top: 30px;
+    }
+    .categoria h3 {
+      background: #d2a540;
+      padding: 10px;
+      color: white;
+      border-radius: 5px;
+      margin: 0 0 15px;
+    }
+    .produtos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .produto {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      width: 250px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .produto img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+    .produto-content {
+      padding: 10px;
+    }
+    .produto h4 {
+      margin: 5px 0;
+    }
+    .produto p {
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: #555;
+    }
+    .produto .preco {
+      font-weight: bold;
+      color: #b3822c;
+    }
+    .produto button {
+      margin-top: auto;
+      background: #c7963b;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .produto button:hover {
+      background: #a56e1f;
+    }
+    #carrinho {
+      margin-top: 40px;
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Armazém da Senhora Lourdes</h1>
-    <p>Produtos Naturais Direto do Campo</p>
+    <h1>Armazém da Lourdes</h1>
+    <nav>
+      <a href="#produtos">Produtos</a>
+      <a href="#carrinho">Carrinho</a>
+    </nav>
   </header>
   <main>
-    <h2>Catálogo</h2>
-    <div id="catalogo"></div>
+    <h2 id="produtos">Nossos Produtos</h2>
 
-    <h2>Carrinho</h2>
+    <div class="categoria">
+      <h3>🍯 Méis Deliciosos</h3>
+      <div class="produtos">
+        <div class="produto">
+          <img src="https://cdn.pixabay.com/photo/2016/05/18/17/33/honey-1401969_1280.jpg" alt="Mel Silvestre">
+          <div class="produto-content">
+            <h4>Mel Silvestre Orgânico</h4>
+            <p>Mel puro de flores silvestres, colhido de forma sustentável.</p>
+            <p class="preco">R$ 25,99</p>
+            <button onclick="adicionarAoCarrinho({ nome: 'Mel Silvestre Orgânico', preco: 25.99 })">Adicionar ao Carrinho</button>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://cdn.pixabay.com/photo/2017/07/16/11/49/honey-2504692_1280.jpg" alt="Mel Laranjeira">
+          <div class="produto-content">
+            <h4>Mel de Laranjeira Puro</h4>
+            <p>Mel suave e aromático, proveniente de flores de laranjeira.</p>
+            <p class="preco">R$ 28,00</p>
+            <button onclick="adicionarAoCarrinho({ nome: 'Mel de Laranjeira Puro', preco: 28.00 })">Adicionar ao Carrinho</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="categoria">
+      <h3>🧀 Queijos Artesanais</h3>
+      <div class="produtos">
+        <div class="produto">
+          <img src="https://cdn.pixabay.com/photo/2017/02/07/21/15/cheese-2040242_1280.jpg" alt="Queijo Colonial">
+          <div class="produto-content">
+            <h4>Queijo Colonial</h4>
+            <p>Queijo artesanal produzido com leite fresco da fazenda.</p>
+            <p class="preco">R$ 32,50</p>
+            <button onclick="adicionarAoCarrinho({ nome: 'Queijo Colonial', preco: 32.50 })">Adicionar ao Carrinho</button>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://cdn.pixabay.com/photo/2020/06/21/11/14/cheese-5323377_1280.jpg" alt="Queijo com Ervas">
+          <div class="produto-content">
+            <h4>Queijo com Ervas</h4>
+            <p>Saboroso queijo temperado com ervas finas da região.</p>
+            <p class="preco">R$ 36,00</p>
+            <button onclick="adicionarAoCarrinho({ nome: 'Queijo com Ervas', preco: 36.00 })">Adicionar ao Carrinho</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="categoria">
+      <h3>🌿 Temperos Naturais</h3>
+      <div class="produtos">
+        <div class="produto">
+          <img src="https://cdn.pixabay.com/photo/2014/12/21/23/28/spices-576189_1280.png" alt="Tempero Caseiro">
+          <div class="produto-content">
+            <h4>Tempero Caseiro</h4>
+            <p>Mix de ervas naturais moídas artesanalmente.</p>
+            <p class="preco">R$ 12,00</p>
+            <button onclick="adicionarAoCarrinho({ nome: 'Tempero Caseiro', preco: 12.00 })">Adicionar ao Carrinho</button>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://cdn.pixabay.com/photo/2018/04/19/08/06/chili-3336745_1280.jpg" alt="Pimenta Calabresa">
+          <div class="produto-content">
+            <h4>Pimenta Calabresa</h4>
+            <p>Pimenta calabresa seca, ideal para dar um toque picante.</p>
+            <p class="preco">R$ 8,90</p>
+            <button onclick="adicionarAoCarrinho({ nome: 'Pimenta Calabresa', preco: 8.90 })">Adicionar ao Carrinho</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="categoria">
+      <h3>🍓 Geleias Artesanais</h3>
+      <div class="produtos">
+        <div class="produto">
+          <img src="https://cdn.pixabay.com/photo/2016/05/09/12/45/strawberry-jam-1384797_1280.jpg" alt="Geleia de Morango">
+          <div class="produto-content">
+            <h4>Geleia de Morango</h4>
+            <p>Geleia feita com morangos frescos, sem conservantes.</p>
+            <p class="preco">R$ 15,00</p>
+            <button onclick="adicionarAoCarrinho({ nome: 'Geleia de Morango', preco: 15.00 })">Adicionar ao Carrinho</button>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://cdn.pixabay.com/photo/2015/03/26/09/43/jam-690894_1280.jpg" alt="Geleia de Laranja">
+          <div class="produto-content">
+            <h4>Geleia de Laranja</h4>
+            <p>Geleia cítrica com toque adocicado, perfeita para pães.</p>
+            <p class="preco">R$ 14,00</p>
+            <button onclick="adicionarAoCarrinho({ nome: 'Geleia de Laranja', preco: 14.00 })">Adicionar ao Carrinho</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div id="carrinho">
+      <h2>Carrinho</h2>
       <ul id="lista-carrinho"></ul>
       <p>Total: R$ <span id="total">0.00</span></p>
       <a id="finalizar" href="#" target="_blank"><button>Finalizar no WhatsApp</button></a>
@@ -32,14 +204,6 @@
   </main>
 
   <script>
-    const produtos = [
-      { nome: 'Mel Puro 500ml', preco: 20 },
-      { nome: 'Farinha de Mandioca', preco: 10 },
-      { nome: 'Feijão Orgânico 1kg', preco: 15 },
-      { nome: 'Chá de Ervas Naturais', preco: 12 },
-    ];
-
-    const catalogoDiv = document.getElementById('catalogo');
     const listaCarrinho = document.getElementById('lista-carrinho');
     const totalSpan = document.getElementById('total');
     const finalizarBtn = document.getElementById('finalizar');
@@ -64,14 +228,6 @@
       );
       finalizarBtn.href = `https://wa.me/554598448614?text=${mensagem}`;
     }
-
-    produtos.forEach(produto => {
-      const div = document.createElement('div');
-      div.className = 'produto';
-      div.innerHTML = `<span>${produto.nome} - R$ ${produto.preco.toFixed(2)}</span>
-        <button onclick='adicionarAoCarrinho(${JSON.stringify(produto)})'>Adicionar</button>`;
-      catalogoDiv.appendChild(div);
-    });
 
     function adicionarAoCarrinho(produto) {
       carrinho.push(produto);
